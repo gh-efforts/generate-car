@@ -17,6 +17,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/ipfs/go-cid"
 	cbor "github.com/ipfs/go-ipld-cbor"
+	"github.com/multiformats/go-varint"
 	"github.com/tech-greedy/generate-car/util"
 	"github.com/urfave/cli/v2"
 )
@@ -164,6 +165,7 @@ func main() {
 			if err != nil {
 				return err
 			}
+			writer.Write(varint.ToUvarint(0))
 			err = writer.Flush()
 			if err != nil {
 				return err
